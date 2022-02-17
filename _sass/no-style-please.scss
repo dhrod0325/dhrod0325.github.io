@@ -1,65 +1,104 @@
-// -------------- THEME SWITCHER -------------- //
 @mixin dark-appearance {
   filter: invert(1);
   img {
     filter: invert(1);
 
-    &.ioda { filter: invert(0); }
+    &.ioda {
+      filter: invert(0);
+    }
   }
 }
 
-body[a="dark"] { @include dark-appearance; }
+body[a="dark"] {
+  @include dark-appearance;
+}
 
 
 @media (prefers-color-scheme: dark) {
-  body[a="auto"] { @include dark-appearance; }
+  body[a="auto"] {
+    @include dark-appearance;
+  }
 }
-// -------------------------------------------- //
 
-// bg color is also needed in html in order to
-// block body's background propagation
-// see: https://stackoverflow.com/a/61265706
-html, body { background: white; }
+html, body {
+  background: white;
+}
 
-html { height: 100%; }
+html {
+  height: 100%;
+}
+
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/notosanskr/v13/PbykFmXiEBPT4ITbgNA5Cgm203Tq4JJWq209pU0DPdWuqxJFA4GNDCBYtw.0.woff2) format("woff2");
+}
 
 body {
   color: black;
-  font-family: monospace;
+  font-family: Noto Sans KR, monospace;
   font-size: 16px;
   line-height: 1.4;
   margin: 0;
   min-height: 100%;
   overflow-wrap: break-word;
+  background: #dedede;
 }
 
-.post-meta { text-align: right; }
+.post-meta {
+  text-align: right;
+}
 
-h2, h3, h4, h5, h6 { margin-top: 3rem; }
+h2, h3, h4, h5, h6 {
+  margin-top: 3rem;
+}
 
-hr { margin: 2rem 0; }
+hr {
+  margin: 2rem 0;
+}
 
-p { margin: 1rem 0; }
+p {
+  margin: 1rem 0;
+}
 
-li { margin: 0.4rem 0; }
+li {
+  margin: 0.4rem 0;
+}
 
-*:target { background: yellow; }
+*:target {
+  background: yellow;
+}
+
+.page-content {
+  padding-top: 3rem;
+}
 
 .w {
-  max-width: 640px;
-  margin: 0 auto;
+  max-width: 980px;
   padding: 4rem 2rem;
+  background: #fff;
+  border: 1px solid #dedede;
+  margin: 0 auto;
 }
 
 hr {
   text-align: center;
   border: 0;
 
-  &:before { content: '/////' }
-  &:after { content: attr(data-content) '/////' }
+  &:before {
+    content: '/////'
+  }
+
+  &:after {
+    content: attr(data-content) '/////'
+  }
 }
 
-table { width: 100%; }
+table {
+  width: 100%;
+}
 
 table, th, td {
   border: thin solid black;
@@ -84,7 +123,9 @@ blockquote {
   border: thin solid black;
   padding: 1rem;
 
-  p { margin: 0; }
+  p {
+    margin: 0;
+  }
 }
 
 img {
