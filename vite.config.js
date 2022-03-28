@@ -6,6 +6,7 @@ const dirPath = path.resolve(__dirname, './');
 const sourcePath = `${dirPath}/src`;
 
 export default defineConfig({
+  base: '/',
   resolve: {
     alias: {
       '~': dirPath,
