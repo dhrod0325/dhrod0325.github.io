@@ -1,7 +1,9 @@
 import { FC, useState } from 'react';
-import AppStyle from '../assets/css/App.module.scss';
-import logo from '../assets/images/logo.svg';
-import { CountButton } from '../components';
+
+import AppStyle from '@/assets/css/App.module.scss';
+import logo from '@/assets/images/logo.svg';
+
+import { CountButton } from '@/components';
 import cn from 'classnames';
 
 export const IndexPage: FC = () => {

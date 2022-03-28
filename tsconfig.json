@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"],
+      "~/*": ["./*"]
+    },
     "composite": true,
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -20,6 +24,6 @@
     "declaration" : true,
     "declarationDir" : "./types"
   },
-  "include": ["src", "myplugin"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
