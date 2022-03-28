@@ -9,8 +9,6 @@ npm run build
 # 빌드된 파일이 존재하는 dist 디렉터리로 이동
 cd dist
 
-erro
-
 ls
 
 # CNAME 파일을 이용해 커스텀 도메인을 지정할 수도 있습니다.

@@ -1,13 +1,17 @@
 {
+  "homepage": "https://dhrod0325.github.io",
   "name": "my-vite-app",
   "private": true,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1"
@@ -18,21 +22,20 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/node": "^17.0.23",
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
+    "@vitejs/plugin-react": "^1.0.7",
+    "classnames": "^2.3.1",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "path": "^0.12.7",
     "prettier": "^2.5.1",
     "prettier-eslint": "^13.0.0",
+    "sass": "^1.49.0",
     "typescript": "^4.5.4",
-    "vite": "^2.8.6",
-    "path": "^0.12.7",
-
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
-    "@vitejs/plugin-react": "^1.0.7",
-    "classnames": "^2.3.1",
-    "sass": "^1.49.0"
+    "vite": "^2.8.6"
   }
 }
