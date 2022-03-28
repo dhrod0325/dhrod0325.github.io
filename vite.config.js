@@ -16,5 +16,6 @@ export default defineConfig({
   server: {
     port: 4000,
   },
+  root: 'src',
   plugins: [react()],
 });
