@@ -1,0 +1,48 @@
+.App {
+  text-align: center;
+  flex-grow: 1;
+}
+
+.AppLogo {
+  height: 40vmin;
+  pointer-events: none;
+  animation: AppLogoSpin infinite 20s linear;
+}
+
+.Bar {
+  padding:10px;
+  text-align: center;
+  background: #282c34;
+  color:#fff;
+  font-size:2rem;
+}
+
+.AppLink {
+  color: #61dafb;
+}
+
+.Main{
+  display: flex;
+  flex-direction: column;
+}
+
+.NavActive{
+  color: red;
+}
+
+.NavDeActive{
+  color: black;
+}
+
+@keyframes AppLogoSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+button {
+  font-size: calc(10px + 2vmin);
+}
