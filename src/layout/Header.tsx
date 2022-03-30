@@ -1,8 +1,17 @@
-import style from '@/assets/css/App.module.scss';
-
 import { FC } from 'react';
-import classNames from 'classnames';
 
 export const Header: FC = () => {
-  return <header className={classNames(style.Bar)}>Header</header>;
+  return (
+    <header className="blog-header py-3">
+      <div className="container">
+        <div className="row flex-nowrap justify-content-between align-items-center">
+          <div className="col-12 text-center">
+            <a className="blog-header-logo" href="#">
+              dhrod0325.github.io
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 };

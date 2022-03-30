@@ -1,25 +1,48 @@
-import style from '@/assets/css/App.module.scss';
-
-import { FC } from 'react';
-import { NavLink } from 'react-router-dom';
-
-type NavActive = { isActive: boolean };
+import {FC} from 'react';
 
 export const Gnb: FC = () => {
-  const activeClassName = ({ isActive }: NavActive) => (isActive ? style.NavActive : '');
-
   return (
-    <ul>
-      <li>
-        <NavLink to={'/'} className={activeClassName}>
-          INDEX
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={'/todo'} className={activeClassName}>
-          TODO PAGE
-        </NavLink>
-      </li>
-    </ul>
+    <div className="container">
+      <div className="nav-scroller py-1 mb-2">
+        <nav className="nav d-flex justify-content-between">
+          <a className="p-2 link-secondary" href="#">
+            World
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            U.S.
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Technology
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Design
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Culture
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Business
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Politics
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Opinion
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Science
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Health
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Style
+          </a>
+          <a className="p-2 link-secondary" href="#">
+            Travel
+          </a>
+        </nav>
+      </div>
+    </div>
   );
 };
