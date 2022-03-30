@@ -1,4 +1,4 @@
-import {FC} from 'react';
+import { FC } from 'react';
 
 export const IndexPage: FC = () => {
   return (
@@ -307,18 +307,14 @@ export const IndexPage: FC = () => {
             <a className="btn btn-outline-primary" href="#">
               Older
             </a>
-            <a
-              className="btn btn-outline-secondary disabled"
-              href="#"
-              aria-disabled="true"
-            >
+            <a className="btn btn-outline-secondary disabled" href="#" aria-disabled="true">
               Newer
             </a>
           </nav>
         </div>
 
         <div className="col-md-4">
-          <div className="position-sticky" style={{ top: "2rem" }}>
+          <div className="position-sticky" style={{ top: '2rem' }}>
             <div className="p-4 mb-3 bg-light rounded">
               <h4 className="fst-italic">About</h4>
               <p className="mb-0">
@@ -387,13 +383,14 @@ export const IndexPage: FC = () => {
         </div>
       </div>
       <script
-          src="//utteranc.es/client.js"
-          // @ts-ignore
-          repo="dhrod0325/dhrod0325.github.io"
-          issue-term="title"
-          theme="github-light"
-          crossOrigin="anonymous"
-          async
+        src="//utteranc.es/client.js"
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        repo="dhrod0325/dhrod0325.github.io"
+        issue-term="title"
+        theme="github-light"
+        crossOrigin="anonymous"
+        async
       ></script>
     </main>
   );
