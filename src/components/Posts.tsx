@@ -7,7 +7,7 @@ type PostsProps = {
   posts: PostsWrapper;
 };
 
-export const Posts: FC<PostsProps> = props => {
+export const Posts: FC<PostsProps> = () => {
   const { posts } = useContext(BlogContextStore);
 
   return (

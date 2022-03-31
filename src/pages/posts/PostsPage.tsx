@@ -1,9 +1,9 @@
-import { FC } from 'react';
-import { PostsWrapper } from '@/libs/PostsWrapper';
+import { FC, useContext } from 'react';
 import { Posts } from '@/components/Posts';
+import { BlogContextStore } from '@/libs/context/BlogContext';
 
 export const PostsPage: FC = () => {
-  const posts = new PostsWrapper();
+  const { posts } = useContext(BlogContextStore);
 
   return (
     <main className="container">

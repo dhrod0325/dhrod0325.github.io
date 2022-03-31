@@ -8,6 +8,7 @@ type PostProps = {
 
 export const PostSummary: FC<PostProps> = props => {
   const { title, date, summary, fileName } = props.post;
+
   return (
     <article className="blog-post">
       <NavLink to={`/post/${fileName}`}>
