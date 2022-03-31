@@ -11,6 +11,10 @@ export class PostsWrapper {
       post.date = new Date(post.date);
     });
 
+    this.sortByDate();
+  }
+
+  public sortByDate() {
     this.posts.sort((a, b) => (<Date>b.date).getTime() - (<Date>a.date).getTime());
   }
 
@@ -36,7 +40,7 @@ export class PostsWrapper {
   }
 
   public getPostByFileName(fileName: string) {
-    return this.posts.filter(post => post.fileName === fileName)[0];
+    return [...this.posts].filter(post => post.fileName === fileName)[0];
   }
 
   public getPosts(): PostsType {

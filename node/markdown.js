@@ -1,8 +1,8 @@
 const markdown = require('markdown-it');
 const highlight = require('highlight.js');
 
-export function getMarkdown() {
-  return markdown({
+function getMarkdown() {
+  const md = markdown({
     html: true,
     xhtmlOut: false,
     breaks: false,
@@ -25,4 +25,8 @@ export function getMarkdown() {
       return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
     },
   });
+
+  return md;
 }
+
+module.exports = { getMarkdown };

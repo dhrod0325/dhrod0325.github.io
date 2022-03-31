@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import parser from 'html-react-parser';
 import { PostType } from 'blog';
-import { PostsWrapper } from '@/libs/PostsWrapper';
+import { BlogContextStore } from '@/libs/context/BlogContext';
 
 export const PostDetail: FC = () => {
-  const posts = new PostsWrapper();
+  const { posts } = useContext(BlogContextStore);
   const { id } = useParams();
 
   const post: PostType = posts.getPostByFileName(id as string);

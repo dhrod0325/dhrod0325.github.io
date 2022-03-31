@@ -1,13 +1,14 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { PostsWrapper } from '@/libs/PostsWrapper';
 import { PostSummary } from '@/components/PostSummary';
+import { BlogContextStore } from '@/libs/context/BlogContext';
 
 type PostsProps = {
   posts: PostsWrapper;
 };
 
 export const Posts: FC<PostsProps> = props => {
-  const { posts } = props;
+  const { posts } = useContext(BlogContextStore);
 
   return (
     <>

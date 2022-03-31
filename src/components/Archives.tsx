@@ -1,6 +1,14 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
+import { BlogContextStore } from '@/libs/context/BlogContext';
+import moment from 'moment';
 
 export const Archives: FC = () => {
+  const { posts } = useContext(BlogContextStore);
+
+  posts.getPosts().forEach(post => {
+    console.log(moment(post.date).format('YYYY-MM-DD'));
+  });
+
   return (
     <div className="p-4">
       <h4 className="fst-italic">Archives</h4>

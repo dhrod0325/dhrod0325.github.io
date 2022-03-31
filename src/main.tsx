@@ -10,20 +10,23 @@ import { About } from '@/pages/about/About';
 import { Index } from '@/pages';
 import { PostsPage } from '@/pages/posts/PostsPage';
 import { PostDetail } from './pages/posts/PostDetail';
+import { BlogContext } from '@/libs/context/BlogContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/posts" element={<PostsPage />} />
-          <Route path="/post/:id" element={<PostDetail />} />
-          <Route path="/*" element={<Error />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <BlogContext>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/posts" element={<PostsPage />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/*" element={<Error />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </BlogContext>
   </React.StrictMode>,
   document.getElementById('root'),
 );

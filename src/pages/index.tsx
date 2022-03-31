@@ -1,13 +1,13 @@
-import { FC } from 'react';
-import { PostsWrapper } from '@/libs/PostsWrapper';
+import { FC, useContext } from 'react';
 import { Contact } from '@/components/Contact';
 import { Archives } from '@/components/Archives';
 import { About } from '@/components/About';
 import { Posts } from '@/components/Posts';
 import { ThumbCard } from '@/components/ThumbCard';
+import { BlogContextStore } from '@/libs/context/BlogContext';
 
 export const Index: FC = () => {
-  const posts = new PostsWrapper();
+  const { posts } = useContext(BlogContextStore);
   const firstPosts = posts.getFirstPostsOfCategory();
 
   return (
