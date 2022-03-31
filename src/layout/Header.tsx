@@ -6,7 +6,7 @@ export const Header: FC = () => {
       <div className="container">
         <div className="row flex-nowrap justify-content-between align-items-center">
           <div className="col-12 text-center">
-            <a className="blog-header-logo" href="#">
+            <a className="blog-header-logo" href="/">
               dhrod0325.github.io
             </a>
           </div>

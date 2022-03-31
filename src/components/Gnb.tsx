@@ -1,16 +1,17 @@
-import {FC} from 'react';
+import { FC } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export const Gnb: FC = () => {
   return (
     <div className="container">
       <div className="nav-scroller py-1 mb-2">
         <nav className="nav">
-          <a className="p-2 link-secondary" href="#">
+          <NavLink className="p-2 link-secondary" to={`/about`}>
             About me
-          </a>
-          <a className="p-2 link-secondary" href="#">
+          </NavLink>
+          <NavLink className="p-2 link-secondary" to={`/posts`}>
             Posts
-          </a>
+          </NavLink>
         </nav>
       </div>
     </div>

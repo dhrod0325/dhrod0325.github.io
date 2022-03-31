@@ -25,6 +25,6 @@
     "declarationDir" : "./types",
     "types": ["node"]
   },
-  "include": ["app.ts","src"],
+  "include": ["app.ts","src","src/assets/json/contents.json"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
