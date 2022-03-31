@@ -1,32 +1,10 @@
-const highlight = require('highlight.js');
 const path = require('path');
 const fs = require('fs');
-const markdown = require('markdown-it');
+const { getMarkdown } = require('./markdown');
 
-const md = markdown({
-  html: true,
-  xhtmlOut: false,
-  breaks: false,
-  langPrefix: 'language-',
-  linkify: true,
-  typographer: true,
-  quotes: '“”‘’',
-  highlight: function (str, lang) {
-    if (lang && highlight.getLanguage(lang)) {
-      try {
-        return (
-          '<pre class="hljs"><code>' + highlight.highlight(lang, str, true).value + '</code></pre>'
-        );
-      } catch (__) {
-        //
-      }
-    }
-    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-  },
-});
+const md = getMarkdown();
 
-const directoryPath = path.join(__dirname, '');
-
+const directoryPath = path.join(__dirname, '../src/@contents');
 const contentFiles = fs.readdirSync(directoryPath);
 const files = contentFiles.filter(file => !file.endsWith('.js'));
 

@@ -6,7 +6,7 @@ type PostProps = {
   post: PostType;
 };
 
-export const Post: FC<PostProps> = props => {
+export const PostSummary: FC<PostProps> = props => {
   const { title, date, summary, fileName } = props.post;
   return (
     <article className="blog-post">

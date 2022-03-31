@@ -8,7 +8,7 @@ import { Layout } from './layout';
 import { Error } from '@/pages/error/Error';
 import { About } from '@/pages/about/About';
 import { Index } from '@/pages';
-import { Posts } from '@/pages/posts/Posts';
+import { PostsPage } from '@/pages/posts/PostsPage';
 import { PostDetail } from './pages/posts/PostDetail';
 
 ReactDOM.render(
@@ -18,7 +18,7 @@ ReactDOM.render(
         <Route path="/" element={<Layout />}>
           <Route index element={<Index />} />
           <Route path="/about" element={<About />} />
-          <Route path="/posts" element={<Posts />} />
+          <Route path="/posts" element={<PostsPage />} />
           <Route path="/post/:id" element={<PostDetail />} />
           <Route path="/*" element={<Error />} />
         </Route>
