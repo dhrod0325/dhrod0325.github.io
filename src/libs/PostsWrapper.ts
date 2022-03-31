@@ -1,8 +1,8 @@
 import posts from '@/assets/json/posts.json';
-import { Post, Posts } from 'blog';
+import { PostType, PostsType } from 'blog';
 
 export class PostsWrapper {
-  private readonly posts: Posts;
+  private readonly posts: PostsType;
 
   constructor() {
     this.posts = posts;
@@ -19,17 +19,17 @@ export class PostsWrapper {
     return [...new Set(categories)];
   }
 
-  public getPostsByCategory(category: string): Posts {
+  public getPostsByCategory(category: string): PostsType {
     return [...this.posts].filter(post => post.category === category);
   }
 
-  public getFirstPostByCategory(category: string): Post {
+  public getFirstPostByCategory(category: string): PostType {
     const posts = this.getPostsByCategory(category);
 
-    return (posts.length > 0 ? posts[0] : {}) as Post;
+    return (posts.length > 0 ? posts[0] : {}) as PostType;
   }
 
-  public getFirstPostsOfCategory(): Posts {
+  public getFirstPostsOfCategory(): PostsType {
     const categories = this.getCategories();
 
     return categories.map(category => this.getFirstPostByCategory(category));
@@ -39,7 +39,7 @@ export class PostsWrapper {
     return this.posts.filter(post => post.fileName === fileName)[0];
   }
 
-  public getPosts(): Posts {
+  public getPosts(): PostsType {
     return this.posts;
   }
 }

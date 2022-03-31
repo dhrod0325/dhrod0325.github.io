@@ -1,5 +1,5 @@
 declare module 'blog' {
-  export type Post = {
+  export type PostType = {
     fileName: string;
     category: string;
     html: string;
@@ -9,5 +9,5 @@ declare module 'blog' {
     date: string | Date;
   };
 
-  export type Posts = Post[];
+  export type PostsType = PostType[];
 }
