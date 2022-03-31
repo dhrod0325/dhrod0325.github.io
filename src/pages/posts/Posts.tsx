@@ -1,5 +1,6 @@
+import contents from '@/assets/json/posts.json';
+
 import { FC } from 'react';
-import contents from '@/assets/json/contents.json';
 import { NavLink } from 'react-router-dom';
 
 export const Posts: FC = () => {

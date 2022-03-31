@@ -17,7 +17,9 @@ const md = markdown({
         return (
           '<pre class="hljs"><code>' + highlight.highlight(lang, str, true).value + '</code></pre>'
         );
-      } catch (__) {}
+      } catch (__) {
+        //
+      }
     }
     return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
   },
@@ -28,14 +30,14 @@ const directoryPath = path.join(__dirname, '');
 const contentFiles = fs.readdirSync(directoryPath);
 const files = contentFiles.filter(file => !file.endsWith('.js'));
 
-const contents = {};
+const posts = [];
 
 files.forEach(file => {
   const fileName = file.slice(0, file.indexOf('.'));
   const body = fs.readFileSync(`${directoryPath}/${file}`, 'utf8');
   const html = md.render(body);
 
-  const content = {
+  const post = {
     fileName,
     html,
   };
@@ -48,17 +50,16 @@ files.forEach(file => {
     .filter(e => e.trim().length > 0)
     .forEach(e => {
       const line = e.split(':');
-      const commentTitle = line[0].trim();
-      const commentContent = line[1].trim();
+      const [key, value] = line;
 
-      content[commentTitle] = commentContent;
+      post[key.trim()] = value.trim();
     });
 
-  contents[fileName] = content;
+  posts.push(post);
 });
 
-const fileName = `${directoryPath}/../assets/json/contents.json`;
+const fileName = `${directoryPath}/../assets/json/posts.json`;
 
 console.log(`write file : ${fileName}`);
-console.log(contents);
-fs.writeFileSync(fileName, JSON.stringify(contents));
+
+fs.writeFileSync(fileName, JSON.stringify(posts));

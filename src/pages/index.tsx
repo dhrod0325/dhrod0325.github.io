@@ -1,97 +1,43 @@
 import { FC } from 'react';
+import { PostsWrapper } from '@/libs/PostsWrapper';
 
 export const Index: FC = () => {
+  const posts = new PostsWrapper();
+
+  const firstPosts = posts.getFirstPostsOfCategory();
+
   return (
     <main className="container">
       <div className="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div className="col-md-6 px-0">
-          <h1 className="display-4 fst-italic">Title of a longer featured blog post</h1>
-          <p className="lead my-3">
-            Multiple lines of text that form the lede, informing new readers quickly and efficiently
-            about what’s most interesting in this post’s contents.
-          </p>
-          <p className="lead mb-0">
-            <a href="#" className="text-white fw-bold">
-              Continue reading...
-            </a>
-          </p>
+          <h2 className="display-4 fst-italic">Web Developer</h2>
         </div>
       </div>
 
       <div className="row mb-2">
-        <div className="col-md-6">
-          <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div className="col p-4 d-flex flex-column position-static">
-              <strong className="d-inline-block mb-2 text-primary">World</strong>
-              <h3 className="mb-0">Featured post</h3>
-              <div className="mb-1 text-muted">Nov 12</div>
-              <p className="card-text mb-auto">
-                This is a wider card with supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <a href="#" className="stretched-link">
-                Continue reading
-              </a>
-            </div>
-            <div className="col-auto d-none d-lg-block">
-              <svg
-                className="bd-placeholder-img"
-                width="200"
-                height="250"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c" />
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                  Thumbnail
-                </text>
-              </svg>
+        {firstPosts.map(({ title, category, date, summary, thumb }) => (
+          <div className="col-md-6" key={date.toLocaleString()}>
+            <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+              <div className="col p-4 d-flex flex-column position-static">
+                <strong className="d-inline-block mb-2 text-primary">{category}</strong>
+                <h3 className="mb-0">{title}</h3>
+                <div className="mb-1 text-muted">{date.toLocaleString()}</div>
+                <p className="card-text mb-auto">{summary}</p>
+                <a href="#" className="stretched-link">
+                  Continue reading
+                </a>
+              </div>
+              <div className="col-auto d-none d-lg-block">
+                <img src={thumb} alt="" style={{ height: `100%` }} />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="col-md-6">
-          <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-            <div className="col p-4 d-flex flex-column position-static">
-              <strong className="d-inline-block mb-2 text-success">Design</strong>
-              <h3 className="mb-0">Post title</h3>
-              <div className="mb-1 text-muted">Nov 11</div>
-              <p className="mb-auto">
-                This is a wider card with supporting text below as a natural lead-in to additional
-                content.
-              </p>
-              <a href="#" className="stretched-link">
-                Continue reading
-              </a>
-            </div>
-            <div className="col-auto d-none d-lg-block">
-              <svg
-                className="bd-placeholder-img"
-                width="200"
-                height="250"
-                xmlns="http://www.w3.org/2000/svg"
-                role="img"
-                aria-label="Placeholder: Thumbnail"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c" />
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                  Thumbnail
-                </text>
-              </svg>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
 
       <div className="row g-5">
         <div className="col-md-8">
-          <h3 className="pb-4 mb-4 fst-italic border-bottom">From the Firehose</h3>
+          <h3 className="pb-4 mb-4 fst-italic border-bottom">Posts</h3>
 
           <article className="blog-post">
             <h2 className="blog-post-title">Sample blog post</h2>

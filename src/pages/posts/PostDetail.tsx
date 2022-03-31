@@ -1,13 +1,12 @@
 import { FC } from 'react';
-import contents from '@/assets/json/contents.json';
+import contents from '@/assets/json/posts.json';
 import { useParams } from 'react-router-dom';
 import parser from 'html-react-parser';
+import { Post, Posts } from 'blog';
 
 export const PostDetail: FC = () => {
   const { id } = useParams();
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const content = contents[id];
+  const content: Post = (contents as Posts)[id as string];
 
   console.log(content, contents, id);
 
