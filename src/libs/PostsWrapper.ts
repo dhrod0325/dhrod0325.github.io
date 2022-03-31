@@ -35,6 +35,10 @@ export class PostsWrapper {
     return categories.map(category => this.getFirstPostByCategory(category));
   }
 
+  public getPostByFileName(fileName: string) {
+    return this.posts.filter(post => post.fileName === fileName)[0];
+  }
+
   public getPosts(): Posts {
     return this.posts;
   }
