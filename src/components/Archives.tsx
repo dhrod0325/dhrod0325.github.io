@@ -6,7 +6,7 @@ export const Archives: FC = () => {
   const { posts } = useContext(BlogContextStore);
 
   posts.getPosts().forEach(post => {
-    console.log(moment(post.date).format('YYYY-MM-DD'));
+    // console.log(moment(post.date).format('YYYY-MM-DD'));
   });
 
   return (

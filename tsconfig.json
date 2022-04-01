@@ -23,9 +23,15 @@
     "outDir": "dist",
     "declaration" : true,
     "declarationDir" : "./types",
-    "types": ["node"]
+    "types": ["jest","node"]
   },
-  "include": ["app.ts","src","src/**/*.json"],
+  "include": [
+    "app.ts",
+    "src",
+    "src/**/*.json",
+    "test",
+    "node_modules/@types/jest/index.d.ts"
+  ],
   "exclude": ["node_modules"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

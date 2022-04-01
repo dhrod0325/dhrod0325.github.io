@@ -8,6 +8,7 @@ import { BlogContextStore } from '@/libs/context/BlogContext';
 
 export const Index: FC = () => {
   const { posts } = useContext(BlogContextStore);
+
   const firstPosts = posts.getFirstPostsOfCategory();
 
   return (
