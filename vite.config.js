@@ -13,8 +13,5 @@ export default defineConfig({
       '@': sourcePath,
     },
   },
-  server: {
-    port: 4000,
-  },
   plugins: [react()],
 });
