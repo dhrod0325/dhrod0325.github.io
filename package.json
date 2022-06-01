@@ -17,8 +17,7 @@
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-dom": "^6.2.1",
-    "ts-node": "^10.8.0"
+    "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",
@@ -50,7 +49,8 @@
     "prettier-eslint": "^13.0.0",
     "sass": "^1.49.0",
     "typescript": "^4.5.4",
-    "vite": "^2.8.6"
+    "vite": "^2.8.6",
+    "ts-node": "^10.8.0"
   },
   "jest": {
     "moduleNameMapper": {

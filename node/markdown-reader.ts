@@ -94,16 +94,28 @@ export class Markdown {
     this.html += `${line}`;
   }
 
-  public getMetaData() {
-    return this.metaData;
+  public getMetaData(key: string) {
+    return this.metaData.get(key);
+  }
+
+  public entries() {
+    return Object.fromEntries(this.metaData);
   }
 
   public getHtml() {
     return this.html.trim();
   }
 
-  getMarkdown() {
+  public getMarkdown() {
     return this.markdown;
+  }
+
+  public toObject() {
+    return {
+      html: this.getHtml(),
+      metaData: this.entries(),
+      markdown: this.getMarkdown(),
+    };
   }
 }
 
@@ -137,7 +149,11 @@ export class MarkdownReader {
 
   public readMarkdowns(path: string) {
     const fileList = FileUtils.readFileList(path);
+    return fileList.map(file => this.readMarkdown(file));
+  }
 
+  public readPlainMarkdowns(path: string) {
+    const fileList = FileUtils.readFileList(path);
     return fileList.map(file => this.readMarkdown(file));
   }
 
