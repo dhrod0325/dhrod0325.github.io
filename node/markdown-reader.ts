@@ -1,6 +1,8 @@
-import fs from 'fs';
-const markdown = require('markdown-it');
-const highlight = require('highlight.js');
+import fs from "fs";
+import * as os from "os";
+
+const markdown = require("markdown-it");
+const highlight = require("highlight.js");
 
 export type MarkdownFileType = {
   absolutePath: string;
@@ -8,23 +10,20 @@ export type MarkdownFileType = {
 };
 
 export type MarkdownConstructor = {
-  path: string;
   originalText: string;
   convertedText: string;
 };
 
 export class Markdown {
-  private path: string;
   private originalText: string;
   private convertedText: string;
 
-  private html = '';
-  private markdown = '';
+  private html = "";
+  private markdown = "";
 
   private metaData = new Map<string, string>();
 
   constructor(constructor: MarkdownConstructor) {
-    this.path = constructor.path;
     this.originalText = constructor.originalText;
     this.convertedText = constructor.convertedText;
 
@@ -34,26 +33,30 @@ export class Markdown {
   }
 
   private getOriginalLines() {
-    return this.originalText.split('\n');
+    return this.originalText.split("\n");
   }
 
   private getConvertedLines() {
-    return this.convertedText.split('\n');
+    return this.convertedText.split("\n");
   }
 
   private parseMarkdown() {
     let metaParsed = false;
 
+    const items = [];
+
     for (const line of this.getOriginalLines()) {
-      if (line === '-->') {
+      if (line.trim() === "-->") {
         metaParsed = true;
         continue;
       }
 
       if (metaParsed) {
-        this.markdown += `${line}\n`;
+        items.push(`${line}`);
       }
     }
+
+    this.markdown = items.join(os.EOL);
   }
 
   private parse() {
@@ -64,12 +67,12 @@ export class Markdown {
         continue;
       }
 
-      if (line === '-->') {
+      if (line === "-->") {
         metaParsed = true;
         continue;
       }
 
-      if (line.startsWith('<!--')) {
+      if (line.startsWith("<!--")) {
         continue;
       }
 
@@ -84,8 +87,8 @@ export class Markdown {
   }
 
   private parseMeta(line: string) {
-    const key = line.slice(0, line.indexOf(':')).trim();
-    const value = line.slice(line.indexOf(':') + 1).trim();
+    const key = line.slice(0, line.indexOf(":")).trim();
+    const value = line.slice(line.indexOf(":") + 1).trim();
 
     this.metaData.set(key, value);
   }
@@ -125,18 +128,20 @@ export interface MarkdownConverter {
 
 export class FileUtils {
   public static readFileNames(path: string) {
-    return fs.readdirSync(path).filter(file => file.endsWith('.md'));
+    return fs.readdirSync(path).filter((file) => file.endsWith(".md"));
   }
 
   public static readFile(absolutePath: string): MarkdownFileType {
     return {
       absolutePath,
-      body: fs.readFileSync(absolutePath, 'utf8'),
+      body: fs.readFileSync(absolutePath, "utf8"),
     };
   }
 
   public static readFileList(path: string) {
-    return this.readFileNames(path).map(name => this.readFile(`${path}/${name}`));
+    return this.readFileNames(path).map((name) =>
+      this.readFile(`${path}/${name}`)
+    );
   }
 }
 
@@ -149,17 +154,23 @@ export class MarkdownReader {
 
   public readMarkdowns(path: string) {
     const fileList = FileUtils.readFileList(path);
-    return fileList.map(file => this.readMarkdown(file));
+    return fileList.map((file) => this.readMarkdown(file));
   }
 
   public readPlainMarkdowns(path: string) {
     const fileList = FileUtils.readFileList(path);
-    return fileList.map(file => this.readMarkdown(file));
+    return fileList.map((file) => this.readMarkdown(file));
   }
 
   private readMarkdown(file: MarkdownFileType): Markdown {
     const convertedText = this.markdownConverter.convert(file.body);
-    return new Markdown({ path: file.absolutePath, originalText: file.body, convertedText });
+    return new Markdown({ originalText: file.body, convertedText });
+  }
+
+  public toObject(path: string) {
+    const items = this.readMarkdowns(path);
+
+    return items.map((item) => item.toObject());
   }
 }
 
@@ -169,23 +180,27 @@ export class MarkdownItConverter implements MarkdownConverter {
       html: true,
       xhtmlOut: false,
       breaks: false,
-      langPrefix: 'language-',
+      langPrefix: "language-",
       linkify: true,
       typographer: true,
-      quotes: '“”‘’',
+      quotes: "“”‘’",
       highlight: function (str: string, lang: string) {
         if (lang && highlight.getLanguage(lang)) {
           try {
             return (
               '<pre class="hljs"><code>' +
               highlight.highlight(lang, str, true).value +
-              '</code></pre>'
+              "</code></pre>"
             );
           } catch (__) {
             //
           }
         }
-        return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+        return (
+          '<pre class="hljs"><code>' +
+          md.utils.escapeHtml(str) +
+          "</code></pre>"
+        );
       },
     });
 

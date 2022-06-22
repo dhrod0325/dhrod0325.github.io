@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Layout } from '@/components/layout';
-import { Index } from '@/pages';
-import { Error } from '@/pages/error/Error';
+import React, { FC } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Layout } from "@/components/layout";
+import { Index } from "@/pages";
+import { Error } from "@/pages/error/Error";
 
-import '@/assets/css/global.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "@/assets/css/global.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const App: FC = () => {
   return (

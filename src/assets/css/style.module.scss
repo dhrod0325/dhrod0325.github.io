@@ -1,7 +1,47 @@
 .sidebar {
-  background: red;
-  float: left;
-  width:240px;
-  min-height:100vh;
-  margin-right:20px;
+  a {
+    text-decoration: none;
+  }
+
+  background: #32373d;
+  width: 240px;
+  min-height: 100vh;
+  margin-right: 20px;
+
+  h1 {
+    a {
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+      display: block;
+    }
+
+    &:before {
+      content: " ";
+      background: url(https://avatars.githubusercontent.com/u/1791665?v=4);
+      background-size: 100px 100px;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      display: block;
+      margin: 30px auto;
+    }
+  }
+
+  nav {
+    margin-top: 50px;
+  }
+
+  li {
+    a {
+      color: rgba(255, 255, 255, 0.6);
+      padding: 15px 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      display: block;
+
+      &:hover, {
+        color: #fff;
+      }
+    }
+  }
 }

@@ -1,6 +1,19 @@
-import { FC } from 'react';
-import { Container } from 'react-bootstrap';
+import { FC, useEffect, useState } from "react";
+import { Container } from "react-bootstrap";
 
 export const Index: FC = () => {
-  return <Container>HELLO WORLD</Container>;
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const t = await fetch("/posts/posts.json");
+      setPosts(await t.json());
+    })();
+  });
+
+  return (
+    <Container>
+      {posts.map((post: any, index) => post.metaData.title)}
+    </Container>
+  );
 };
