@@ -1,5 +1,6 @@
 import { FC } from 'react';
+import { Container } from 'react-bootstrap';
 
 export const Index: FC = () => {
-  return <main className="container">HELLO WORLD</main>;
+  return <Container>HELLO WORLD</Container>;
 };
