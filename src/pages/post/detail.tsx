@@ -15,8 +15,7 @@ export const PostDetail = () => {
   const { index } = useParams<{ index: string }>();
 
   useEffect(() => {
-    const post = posts[Number(index)];
-    setPost(post);
+    setPost(posts[Number(index)]);
   }, [posts]);
 
   return (
