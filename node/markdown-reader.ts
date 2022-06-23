@@ -2,7 +2,10 @@ import fs from "fs";
 import * as os from "os";
 
 const markdown = require("markdown-it");
+const markdownAnchor = require("markdown-it-github-headings");
+
 const highlight = require("highlight.js");
+const markdowntoc = require("markdown-toc");
 
 export type MarkdownFileType = {
   absolutePath: string;
@@ -67,12 +70,12 @@ export class Markdown {
         continue;
       }
 
-      if (line === "-->") {
+      if (line === "--&gt;</p>") {
         metaParsed = true;
         continue;
       }
 
-      if (line.startsWith("<!--")) {
+      if (line.startsWith("<p>&lt;!--")) {
         continue;
       }
 
@@ -114,10 +117,19 @@ export class Markdown {
   }
 
   public toObject() {
+    const markdown = this.getMarkdown();
+    const toc = markdowntoc(markdown, { link_prefix: "dsdsdsds" });
+
+    console.log(toc.content);
+
+    const converter = new MarkdownItConverter();
+    const tocHtml = converter.convert(toc.content);
+
     return {
       html: this.getHtml(),
       metaData: this.entries(),
-      markdown: this.getMarkdown(),
+      markdown,
+      tocHtml,
     };
   }
 }
@@ -164,6 +176,7 @@ export class MarkdownReader {
 
   private readMarkdown(file: MarkdownFileType): Markdown {
     const convertedText = this.markdownConverter.convert(file.body);
+
     return new Markdown({ originalText: file.body, convertedText });
   }
 
@@ -176,7 +189,9 @@ export class MarkdownReader {
 
 export class MarkdownItConverter implements MarkdownConverter {
   convert(markdownText: string): string {
-    const md = markdown({
+    const opts = {
+      prefixHeadingIds: false,
+      style: "slugify",
       html: true,
       xhtmlOut: false,
       breaks: false,
@@ -202,7 +217,9 @@ export class MarkdownItConverter implements MarkdownConverter {
           "</code></pre>"
         );
       },
-    });
+    };
+
+    const md = markdown().use(markdownAnchor, opts);
 
     return md.render(markdownText);
   }

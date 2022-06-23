@@ -6,9 +6,6 @@ body {
     background: #f7f7f7 !important;
 }
 
-li {
-}
-
 a {
     text-decoration: none;
 }
@@ -27,7 +24,7 @@ main {
 #content {
     min-height: 80vh;
     margin-top: 20px;
-    max-width: 760px;
+    max-width: 80vw;
 }
 
 .hide {
@@ -41,4 +38,37 @@ nav a.active {
 .markdown-body {
     padding: 20px;
     border: 1px solid #dedede;
+}
+
+.utterances {
+    margin: 0 !important;
+}
+
+.markdown-toc {
+
+}
+
+.markdown-toc ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.markdown-toc li {
+    margin: 10px;
+}
+
+.markdown-toc > ul > li:first-child {
+    margin-top: 0;
+}
+
+.markdown-toc li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+
+.markdown-toc li a:hover {
+    font-weight: bold;
 }

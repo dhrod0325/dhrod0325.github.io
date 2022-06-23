@@ -22,7 +22,7 @@ export const PostList: FC = () => {
       <Row>
         {posts.map(
           ({ metaData: { title, thumb, summary } }: PostType, index) => (
-            <Col md={6} key={index} className="mb-3">
+            <Col md={4} key={index} className="mb-3">
               <Card>
                 <Card.Img variant={"top"} src={thumb} />
                 <Card.Body>
