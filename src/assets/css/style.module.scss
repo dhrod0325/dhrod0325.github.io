@@ -45,3 +45,17 @@
     }
   }
 }
+
+.postTitle {
+  font-size: 3.5rem;
+  margin-bottom: 40px;
+}
+
+.cardTitle {
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-overflow-ellipsis: "...";
+  -webkit-box-orient: vertical
+}

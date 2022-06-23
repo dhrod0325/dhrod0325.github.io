@@ -3,7 +3,9 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { PostType } from "@/@types";
 import { useAtom } from "jotai";
-import { postAtom } from "@/store/postAtom";
+import { postAtom } from "@/@atom/postAtom";
+
+import style from "@/assets/css/style.module.scss";
 
 export const PostList: FC = () => {
   const [posts] = useAtom(postAtom);
@@ -20,11 +22,11 @@ export const PostList: FC = () => {
       <Row>
         {posts.map(
           ({ metaData: { title, thumb, summary } }: PostType, index) => (
-            <Col md={3} key={index}>
+            <Col md={6} key={index} className="mb-3">
               <Card>
                 <Card.Img variant={"top"} src={thumb} />
                 <Card.Body>
-                  <Card.Title>{title}</Card.Title>
+                  <Card.Title className={style.cardTitle}>{title}</Card.Title>
                   <Card.Text>{summary}</Card.Text>
 
                   <Button

@@ -8,7 +8,7 @@ import "@/assets/css/global.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { About } from "@/pages/about/about";
 import { useAtom } from "jotai";
-import { postAtom } from "@/store/postAtom";
+import { postAtom } from "@/@atom/postAtom";
 import { PostDetail } from "@/pages/post/detail";
 
 async function getPosts() {
