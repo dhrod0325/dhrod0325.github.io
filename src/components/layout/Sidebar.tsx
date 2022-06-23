@@ -12,7 +12,7 @@ export const Sidebar = () => {
           <NavLink to={`/`}>HOME</NavLink>
         </li>
         <li>
-          <NavLink to={`/`}>ABOUT</NavLink>
+          <NavLink to={`/about`}>ABOUT</NavLink>
         </li>
         <li>
           <NavLink to={`/posts`}>POSTS</NavLink>

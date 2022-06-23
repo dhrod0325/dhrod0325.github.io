@@ -6,6 +6,7 @@ import { Error } from "@/pages/error/Error";
 
 import "@/assets/css/global.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { About } from "@/pages/about/about";
 
 export const App: FC = () => {
   return (
@@ -14,6 +15,7 @@ export const App: FC = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Index />} />
+            <Route path="/about" element={<About />} />
             <Route path="/*" element={<Error />} />
           </Route>
         </Routes>

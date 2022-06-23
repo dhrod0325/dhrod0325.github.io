@@ -1,6 +1,7 @@
 @import url('https://cdn.jsdelivr.net/gh/naen-nae/fonts@purge-cache-for-subsets/build/css/NotoSansCJKkr.css');
 
 body {
+    font-size: 14px;
     font-family: "NotoSansCJKkr", serif, Nanum Gothic, Malgun Gothic, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue;
 }
 
@@ -26,4 +27,14 @@ main {
     flex-direction: column;
     flex-grow: 1;
     margin: 20px 20px 20px 0;
+    padding-top: 10px;
+}
+
+
+.hide {
+    display: none;
+}
+
+nav a.active {
+    color: #fff;
 }
