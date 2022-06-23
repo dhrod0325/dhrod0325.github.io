@@ -1,10 +1,10 @@
-import { FC } from 'react';
-import { Container } from 'react-bootstrap';
+import { FC } from "react";
+import { Container } from "react-bootstrap";
 
 export const Footer: FC = () => {
   return (
-    <footer className="blog-footer">
-      <Container>
+    <footer>
+      <Container fluid={true}>
         <p>&copy; copyright 2022</p>
       </Container>
     </footer>

@@ -1,50 +1,38 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
-
-export type PostMetaType = {
-  category: string;
-  title: string;
-  date: string;
-  summary: string;
-  thumb: string;
-};
-
-export type PostType = {
-  html: string;
-  markdown: string;
-  metaData: PostMetaType;
-};
-
-type PostCardProps = {
-  post: PostType;
-};
-
-export const PostCard = ({ post }: PostCardProps) => {
-  return <>{post.metaData.title}</>;
-};
+import { useNavigate } from "react-router-dom";
+import { PostType } from "@/@types";
+import { useAtom } from "jotai";
+import { postAtom } from "@/store/postAtom";
 
 export const PostList: FC = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts] = useAtom(postAtom);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    (async () => {
-      const t = await fetch("/posts/posts.json");
-      setPosts(await t.json());
-    })();
-  }, []);
+  const handleRead = (e: MouseEvent, index: number) => {
+    e.preventDefault();
+
+    navigate(`/post/${index}`);
+  };
 
   return (
-    <Container>
+    <Container fluid={true}>
       <Row>
         {posts.map(
           ({ metaData: { title, thumb, summary } }: PostType, index) => (
-            <Col md={3}>
-              <Card key={index}>
+            <Col md={3} key={index}>
+              <Card>
                 <Card.Img variant={"top"} src={thumb} />
                 <Card.Body>
                   <Card.Title>{title}</Card.Title>
                   <Card.Text>{summary}</Card.Text>
-                  <Button variant="primary">READ</Button>
+
+                  <Button
+                    variant="primary"
+                    onClick={(e) => handleRead(e as any, index)}
+                  >
+                    READ
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>

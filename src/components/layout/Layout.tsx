@@ -10,9 +10,9 @@ export const Layout: FC = () => {
 
       <div id="main">
         <Header />
-
-        <Outlet />
-
+        <div id="content">
+          <Outlet />
+        </div>
         <Footer />
       </div>
     </main>
