@@ -11,6 +11,7 @@ import { postsAtom } from "@/@atom";
 import { getPostByPath } from "@/@functions";
 
 import "highlight.js/styles/default.css";
+import hljs from "highlight.js";
 
 export const PostDetail = () => {
   const [post, setPost] = useState<PostType>();
@@ -19,11 +20,12 @@ export const PostDetail = () => {
 
   useEffect(() => {
     const post = getPostByPath(posts, path);
-
-    console.log(post);
-
     setPost(post);
   }, [posts]);
+
+  useEffect(() => {
+    hljs.highlightAll();
+  }, [post]);
 
   return (
     <Container fluid>
