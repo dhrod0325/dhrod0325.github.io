@@ -9,10 +9,7 @@ export const Sidebar = () => {
       </h1>
       <nav>
         <li>
-          <NavLink to={`/`}>HOME</NavLink>
-        </li>
-        <li>
-          <NavLink to={`/about`}>ABOUT</NavLink>
+          <NavLink to={`/`}>ABOUT</NavLink>
         </li>
         <li>
           <NavLink to={`/posts`}>POSTS</NavLink>

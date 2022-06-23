@@ -10,6 +10,7 @@ import { About } from "@/pages/about/about";
 import { useAtom } from "jotai";
 import { postAtom } from "@/@atom/postAtom";
 import { PostDetail } from "@/pages/post/detail";
+import { PostList } from "@/pages/post/list";
 
 async function getPosts() {
   const postsUrl = await fetch("/posts/posts.json");
@@ -32,8 +33,8 @@ export const App: FC = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Index />} />
+            <Route path="/posts" element={<PostList />} />
             <Route path="/post/:index" element={<PostDetail />} />
-            <Route path="/about" element={<About />} />
             <Route path="/*" element={<Error />} />
           </Route>
         </Routes>

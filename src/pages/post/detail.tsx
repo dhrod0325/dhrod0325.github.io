@@ -7,35 +7,16 @@ import { Container } from "react-bootstrap";
 
 import style from "@/assets/css/style.module.scss";
 import "github-markdown-css/github-markdown.css";
+import { Comment } from "@/components/Comment";
 
 export const PostDetail = () => {
   const [post, setPost] = useState<PostType>();
   const [posts] = useAtom(postAtom);
   const { index } = useParams<{ index: string }>();
-  const commentsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const post = posts[Number(index)];
     setPost(post);
-
-    if (post) {
-      const commentScript = document.createElement("script");
-      const config = {
-        src: "https://utteranc.es/client.js",
-        repo: "dhrod0325/dhrod0325.github.io.comment",
-        theme: "github-light",
-        crossOrigin: "anonymous",
-        "issue-term": `${post.metaData.title}`,
-        async: true,
-      };
-
-      Object.entries(config).forEach(([key, value]) => {
-        console.log(value);
-        commentScript.setAttribute(`${key}`, `${value}`);
-      });
-
-      commentsRef.current?.append(commentScript);
-    }
   }, [posts]);
 
   return (
@@ -47,7 +28,7 @@ export const PostDetail = () => {
         dangerouslySetInnerHTML={{ __html: `${post?.html}` }}
       />
 
-      <div className="comments" ref={commentsRef} />
+      <Comment issueTerm={post?.metaData.title} />
     </Container>
   );
 };

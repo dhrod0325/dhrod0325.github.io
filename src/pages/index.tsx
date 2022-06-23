@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { PostList } from "@/pages/post/list";
+import { About } from "@/pages/about/about";
 
 export const Index: FC = () => {
-  return <PostList />;
+  return <About />;
 };
