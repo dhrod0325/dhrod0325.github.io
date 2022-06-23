@@ -1,3 +1,8 @@
+export async function getPosts() {
+  const postsUrl = await fetch("/posts/posts.json");
+  return await postsUrl.json();
+}
+
 export function createUtterancScript(issue: string | undefined) {
   const commentScript = document.createElement("script");
   const config = {

@@ -2,13 +2,13 @@ import { FC } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { PostType } from "@/@types";
+import { postsAtom } from "@/@atom";
 import { useAtom } from "jotai";
-import { postAtom } from "@/@atom/postAtom";
 
 import style from "@/assets/css/style.module.scss";
 
 export const PostList: FC = () => {
-  const [posts] = useAtom(postAtom);
+  const [posts] = useAtom(postsAtom);
   const navigate = useNavigate();
 
   const handleRead = (e: MouseEvent, index: number) => {

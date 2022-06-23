@@ -1,5 +1,4 @@
 import { useAtom } from "jotai";
-import { postAtom } from "@/@atom/postAtom";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PostType } from "@/@types";
@@ -8,10 +7,11 @@ import { Col, Container, Row } from "react-bootstrap";
 import style from "@/assets/css/style.module.scss";
 import "github-markdown-css/github-markdown.css";
 import { Comment } from "@/components/Comment";
+import { postsAtom } from "@/@atom";
 
 export const PostDetail = () => {
   const [post, setPost] = useState<PostType>();
-  const [posts] = useAtom(postAtom);
+  const [posts] = useAtom(postsAtom);
   const { index } = useParams<{ index: string }>();
 
   useEffect(() => {
