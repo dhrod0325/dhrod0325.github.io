@@ -12,8 +12,7 @@ export const About = () => {
       <p>
         <img
           src="https://github-readme-stats.vercel.app/api?username=dhrod0325"
-          alt="junilhwang's github stats bn"
-          className="medium-zoom-image"
+          alt="dhrod0325 github stats bn"
         />
       </p>
 

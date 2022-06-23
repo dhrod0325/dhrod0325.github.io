@@ -8,14 +8,17 @@ import style from "@/assets/css/style.module.scss";
 import "github-markdown-css/github-markdown.css";
 import { Comment } from "@/components/Comment";
 import { postsAtom } from "@/@atom";
+import { getPostByPath } from "@/@functions";
+
+import "highlight.js/styles/default.css";
 
 export const PostDetail = () => {
   const [post, setPost] = useState<PostType>();
   const [posts] = useAtom(postsAtom);
-  const { index } = useParams<{ index: string }>();
+  const { path } = useParams<{ path: string }>();
 
   useEffect(() => {
-    const post = posts[Number(index)];
+    const post = getPostByPath(posts, path);
 
     console.log(post);
 

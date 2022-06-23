@@ -20,7 +20,10 @@ function createPosts() {
   createDir(postPath);
 
   const filePath = `${postPath}/posts.json`;
+
   const fileContent = JSON.stringify(markdowns);
+
+  console.log(fileContent);
 
   fs.writeFileSync(filePath, fileContent, { flag: "w" });
 }

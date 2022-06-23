@@ -30,7 +30,7 @@ export const App: FC = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Index />} />
             <Route path="/posts" element={<PostList />} />
-            <Route path="/post/:index" element={<PostDetail />} />
+            <Route path="/post/:path" element={<PostDetail />} />
             <Route path="/*" element={<Error />} />
           </Route>
         </Routes>

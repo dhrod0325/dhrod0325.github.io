@@ -1,6 +1,12 @@
+import { PostType } from "@/@types";
+
 export async function getPosts() {
   const postsUrl = await fetch("/posts/posts.json");
   return await postsUrl.json();
+}
+
+export function getPostByPath(posts: PostType[], path: string | undefined) {
+  return posts.find((post) => post.path === path);
 }
 
 export function createUtterancScript(issue: string | undefined) {

@@ -11,17 +11,17 @@ export const PostList: FC = () => {
   const [posts] = useAtom(postsAtom);
   const navigate = useNavigate();
 
-  const handleRead = (e: MouseEvent, index: number) => {
+  const handleRead = (e: MouseEvent, path: string) => {
     e.preventDefault();
 
-    navigate(`/post/${index}`);
+    navigate(`/post/${path}`);
   };
 
   return (
     <Container fluid={true}>
       <Row>
         {posts.map(
-          ({ metaData: { title, thumb, summary } }: PostType, index) => (
+          ({ metaData: { title, thumb, summary }, path }: PostType, index) => (
             <Col md={4} key={index} className="mb-3">
               <Card>
                 <Card.Img variant={"top"} src={thumb} />
@@ -31,7 +31,7 @@ export const PostList: FC = () => {
 
                   <Button
                     variant="primary"
-                    onClick={(e) => handleRead(e as any, index)}
+                    onClick={(e) => handleRead(e as any, path)}
                   >
                     READ
                   </Button>

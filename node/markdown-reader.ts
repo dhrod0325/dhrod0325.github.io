@@ -8,6 +8,7 @@ const highlight = require("highlight.js");
 const markdowntoc = require("markdown-toc");
 
 export type MarkdownFileType = {
+  path: string;
   absolutePath: string;
   body: string;
 };
@@ -15,11 +16,13 @@ export type MarkdownFileType = {
 export type MarkdownConstructor = {
   originalText: string;
   convertedText: string;
+  path: string;
 };
 
 export class Markdown {
   private originalText: string;
   private convertedText: string;
+  private path: string;
 
   private html = "";
   private markdown = "";
@@ -27,6 +30,7 @@ export class Markdown {
   private metaData = new Map<string, string>();
 
   constructor(constructor: MarkdownConstructor) {
+    this.path = constructor.path;
     this.originalText = constructor.originalText;
     this.convertedText = constructor.convertedText;
 
@@ -66,10 +70,6 @@ export class Markdown {
     let metaParsed = false;
 
     for (const line of this.getConvertedLines()) {
-      if (!line.trim()) {
-        continue;
-      }
-
       if (line === "--&gt;</p>") {
         metaParsed = true;
         continue;
@@ -84,7 +84,7 @@ export class Markdown {
       }
 
       if (metaParsed) {
-        this.parseHtml(line);
+        this.parseHtml(line + "\n");
       }
     }
   }
@@ -120,14 +120,13 @@ export class Markdown {
     const markdown = this.getMarkdown();
     const toc = markdowntoc(markdown, { link_prefix: "dsdsdsds" });
 
-    console.log(toc.content);
-
     const converter = new MarkdownItConverter();
     const tocHtml = converter.convert(toc.content);
 
     return {
       html: this.getHtml(),
       metaData: this.entries(),
+      path: this.path,
       markdown,
       tocHtml,
     };
@@ -143,8 +142,9 @@ export class FileUtils {
     return fs.readdirSync(path).filter((file) => file.endsWith(".md"));
   }
 
-  public static readFile(absolutePath: string): MarkdownFileType {
+  public static readFile(absolutePath: string, path: string): MarkdownFileType {
     return {
+      path,
       absolutePath,
       body: fs.readFileSync(absolutePath, "utf8"),
     };
@@ -152,7 +152,7 @@ export class FileUtils {
 
   public static readFileList(path: string) {
     return this.readFileNames(path).map((name) =>
-      this.readFile(`${path}/${name}`)
+      this.readFile(`${path}/${name}`, name.replace(".md", ""))
     );
   }
 }
@@ -177,7 +177,13 @@ export class MarkdownReader {
   private readMarkdown(file: MarkdownFileType): Markdown {
     const convertedText = this.markdownConverter.convert(file.body);
 
-    return new Markdown({ originalText: file.body, convertedText });
+    console.log(convertedText);
+
+    return new Markdown({
+      originalText: file.body,
+      convertedText,
+      path: file.path,
+    });
   }
 
   public toObject(path: string) {
@@ -201,26 +207,24 @@ export class MarkdownItConverter implements MarkdownConverter {
       quotes: "“”‘’",
       highlight: function (str: string, lang: string) {
         if (lang && highlight.getLanguage(lang)) {
+          const code = highlight.highlight(lang, str, true).value;
+
           try {
-            return (
-              '<pre class="hljs"><code>' +
-              highlight.highlight(lang, str, true).value +
-              "</code></pre>"
-            );
-          } catch (__) {
-            //
+            return `<pre class="hljs"><code>${code}</code></pre>`;
+          } catch (e) {
+            console.log(e);
           }
         }
-        return (
-          '<pre class="hljs"><code>' +
-          md.utils.escapeHtml(str) +
-          "</code></pre>"
-        );
+
+        const escapeHtml = md.utils.escapeHtml(str);
+
+        return `<pre class="hljs"><code>${escapeHtml}</code></pre>`;
       },
     };
 
     const md = markdown().use(markdownAnchor, opts);
+    const result = md.render(markdownText);
 
-    return md.render(markdownText);
+    return result;
   }
 }

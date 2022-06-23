@@ -11,4 +11,5 @@ export type PostType = {
   markdown: string;
   metaData: PostMetaType;
   tocHtml: string;
+  path: string;
 };
