@@ -1,16 +1,17 @@
 import React, { FC, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useAtom } from "jotai";
+
+import { postAtom } from "@/@atom/postAtom";
+
 import { Layout } from "@/components/layout";
 import { Index } from "@/pages";
-import { Error } from "@/pages/error/Error";
+import { Error } from "@/pages/Error";
+import { PostDetail } from "@/pages/post/detail";
+import { PostList } from "@/pages/post/list";
 
 import "@/assets/css/global.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { About } from "@/pages/about/about";
-import { useAtom } from "jotai";
-import { postAtom } from "@/@atom/postAtom";
-import { PostDetail } from "@/pages/post/detail";
-import { PostList } from "@/pages/post/list";
 
 async function getPosts() {
   const postsUrl = await fetch("/posts/posts.json");
@@ -22,8 +23,7 @@ export const App: FC = () => {
 
   useEffect(() => {
     (async () => {
-      const postResponse = await getPosts();
-      setPosts(postResponse);
+      setPosts(await getPosts());
     })();
   }, []);
 

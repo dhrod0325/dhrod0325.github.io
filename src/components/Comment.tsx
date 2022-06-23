@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { createUtterancScript } from "@/functions/functions";
+import { createUtterancScript } from "@/@functions/functions";
 
 type Props = {
   issueTerm: string | undefined;

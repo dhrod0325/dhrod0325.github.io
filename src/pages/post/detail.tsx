@@ -1,6 +1,6 @@
 import { useAtom } from "jotai";
 import { postAtom } from "@/@atom/postAtom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { PostType } from "@/@types";
 import { Container } from "react-bootstrap";
