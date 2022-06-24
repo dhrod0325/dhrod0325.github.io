@@ -118,10 +118,12 @@ export class Markdown {
 
   public toObject() {
     const markdown = this.getMarkdown();
-    const toc = markdowntoc(markdown, { link_prefix: "dsdsdsds" });
+    const toc = markdowntoc(markdown);
 
     const converter = new MarkdownItConverter();
     const tocHtml = converter.convert(toc.content);
+
+    console.log(tocHtml);
 
     return {
       html: this.getHtml(),
@@ -195,7 +197,6 @@ export class MarkdownItConverter implements MarkdownConverter {
   convert(markdownText: string): string {
     const opts = {
       prefixHeadingIds: false,
-      style: "slugify",
       html: true,
       xhtmlOut: false,
       breaks: false,
@@ -221,8 +222,7 @@ export class MarkdownItConverter implements MarkdownConverter {
     };
 
     const md = markdown().use(markdownAnchor, opts);
-    const result = md.render(markdownText);
 
-    return result;
+    return md.render(markdownText);
   }
 }
