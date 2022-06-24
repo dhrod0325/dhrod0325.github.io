@@ -23,8 +23,6 @@ function createPosts() {
 
   const fileContent = JSON.stringify(markdowns);
 
-  console.log(fileContent);
-
   fs.writeFileSync(filePath, fileContent, { flag: "w" });
 }
 

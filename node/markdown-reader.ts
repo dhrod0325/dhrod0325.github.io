@@ -177,8 +177,6 @@ export class MarkdownReader {
   private readMarkdown(file: MarkdownFileType): Markdown {
     const convertedText = this.markdownConverter.convert(file.body);
 
-    console.log(convertedText);
-
     return new Markdown({
       originalText: file.body,
       convertedText,
