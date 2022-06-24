@@ -24,7 +24,7 @@ export const PostList: FC = () => {
           ({ metaData: { title, thumb, summary }, path }: PostType, index) => (
             <Col md={4} key={index} className="mb-3">
               <Card>
-                <Card.Img variant={"top"} src={thumb} />
+                <Card.Img variant={"top"} src={thumb} height={190} />
                 <Card.Body>
                   <Card.Title className={style.cardTitle}>{title}</Card.Title>
                   <Card.Text>{summary}</Card.Text>

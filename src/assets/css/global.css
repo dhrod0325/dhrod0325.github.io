@@ -45,7 +45,9 @@ nav a.active {
 }
 
 .markdown-toc {
-
+    position: fixed;
+    height: 600px;
+    overflow-y: scroll;
 }
 
 .markdown-toc ul {
