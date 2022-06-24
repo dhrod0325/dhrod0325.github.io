@@ -1,16 +1,18 @@
 import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { PostType } from "@/@types";
 import { Col, Container, Row } from "react-bootstrap";
 
-import style from "@/assets/css/style.module.scss";
-import "github-markdown-css/github-markdown.css";
-import { Comment } from "@/components/Comment";
+import { PostType } from "@/@types";
 import { postsAtom } from "@/@atom";
+import { Comment } from "@/components/Comment";
 import { getPostByPath } from "@/@functions";
 
+import style from "@/assets/css/style.module.scss";
+
+import "github-markdown-css/github-markdown.css";
 import "highlight.js/styles/default.css";
+
 import hljs from "highlight.js";
 
 export const PostDetail = () => {
