@@ -1,4 +1,6 @@
 .sidebar {
+  position: fixed;
+
   a {
     text-decoration: none;
   }
@@ -34,7 +36,7 @@
 
   li {
     list-style: none;
-    
+
     a {
       color: rgba(255, 255, 255, 0.6);
       padding: 15px 30px;
@@ -45,6 +47,12 @@
         color: #fff;
       }
     }
+  }
+}
+
+@media (max-width: 1100px) {
+  .sidebar {
+    display: none !important;
   }
 }
 
