@@ -9,17 +9,12 @@ export const About = () => {
 
       <h2>WEB DEVELOPER</h2>
 
-      <p>
-        <img
-          src="https://github-readme-stats.vercel.app/api?username=dhrod0325"
-          alt="dhrod0325 github stats bn"
-        />
-      </p>
 
       <h2>이력</h2>
 
       <ul>
-        <li>주식회사 인터텍(2018 ~ 현재)</li>
+        <li>주식회사 로텍스(2025 ~ 현재)</li>
+        <li>주식회사 인터텍(2018 ~ 2025)</li>
         <li>프리랜서 (2016 ~ 2018)</li>
         <li>주식회사 BMS (2015 ~ 2016)</li>
         <li>네오인터넷 (2010 ~ 2014)</li>
