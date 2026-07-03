@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# 전역 gitignore가 lockfile을 제외하므로, CI(npm ci) 재현성을 위해 이 저장소에서는 추적
+!package-lock.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
